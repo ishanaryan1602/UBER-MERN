@@ -153,3 +153,96 @@ The request body must be a JSON object containing the following fields:
 ### Notes
 
 - Ensure that the `Content-Type` header is set to `application/json` when making requests to this endpoint.
+
+# User Profile Endpoint
+
+## GET /users/profile
+
+This endpoint is used to get the profile of the authenticated user.
+
+### Request Headers
+
+- `Authorization` (string, required): The JWT token of the authenticated user.
+
+### Example Request
+
+```http
+GET /users/profile HTTP/1.1
+Host: example.com
+Authorization: Bearer your_jwt_token
+```
+
+### Responses
+
+- **200 OK**
+  - **Description**: User profile retrieved successfully.
+  - **Body**: A JSON object containing the user details.
+  - **Example**:
+    ```json
+    {
+      "_id": "user_id",
+      "fullname": {
+        "firstname": "John",
+        "lastname": "Doe"
+      },
+      "email": "john.doe@example.com"
+    }
+    ```
+
+- **401 Unauthorized**
+  - **Description**: Invalid or missing token.
+  - **Body**: A JSON object containing an error message.
+  - **Example**:
+    ```json
+    {
+      "message": "Unauthorized"
+    }
+    ```
+
+### Notes
+
+- Ensure that the `Authorization` header is set to `Bearer your_jwt_token` when making requests to this endpoint.
+
+# User Logout Endpoint
+
+## GET /users/logout
+
+This endpoint is used to log out the authenticated user.
+
+### Request Headers
+
+- `Authorization` (string, required): The JWT token of the authenticated user.
+
+### Example Request
+
+```http
+GET /users/logout HTTP/1.1
+Host: example.com
+Authorization: Bearer your_jwt_token
+```
+
+### Responses
+
+- **200 OK**
+  - **Description**: User successfully logged out.
+  - **Body**: A JSON object containing a success message.
+  - **Example**:
+    ```json
+    {
+      "message": "Logged out successfully"
+    }
+    ```
+
+- **401 Unauthorized**
+  - **Description**: Invalid or missing token.
+  - **Body**: A JSON object containing an error message.
+  - **Example**:
+    ```json
+    {
+      "message": "Unauthorized"
+    }
+    ```
+
+### Notes
+
+- Ensure that the `Authorization` header is set to `Bearer your_jwt_token` when making requests to this endpoint.
